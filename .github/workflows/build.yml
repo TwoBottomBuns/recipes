@@ -1,0 +1,18 @@
+name: Builder
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/moderncv/debian-texlive-docker:main
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: python3 build.py
+      - name: Archive PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: recipes
+          path: output/recipes.pdf

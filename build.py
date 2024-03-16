@@ -79,8 +79,11 @@ def build():
     with open(outfile, "w") as writer:
         writer.write(contents)
 
-    args = shlex.split(f'pdflatex -output-directory={build_dir} {outfile}')
-    result = subprocess.run(args, check=True, stdout=subprocess.PIPE)
+    args = shlex.split(f'latexmk -output-directory={build_dir} {outfile}')
+    try:
+        result = subprocess.run(args, check=True, stdout=subprocess.PIPE)
+    except subprocess.CalledProcessError:
+        print(result.stderr.decode())
 
     # It's possible that the first build couldn't really make the table of contents because the references were not yet
     # generated. In that case, we'll have to run the command a second time.
