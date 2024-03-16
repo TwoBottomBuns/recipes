@@ -1,0 +1,12 @@
+# Vim files
+*.swp
+*.swo
+
+# Latex files
+*.aux
+*.log
+*.out
+*.toc
+
+# Build directory
+output/
