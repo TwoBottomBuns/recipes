@@ -15,5 +15,10 @@ GitHub does not support uploading a single file as an artifact, so you'll have t
 ## To build
 Run `python3 build.py`. You may need to install a LaTeX compiler.
 
+### Dependencies on Ubuntu
+```
+sudo apt install texlive-latex-base texlive-luatex texlive-latex-extra texlive-fonts-recommended
+```
+
 ## Think I should make something?
 Create an issue and I'll see about it :sunglasses:

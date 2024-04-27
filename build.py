@@ -79,7 +79,7 @@ def build():
     with open(outfile, "w") as writer:
         writer.write(contents)
 
-    args = shlex.split(f'latexmk -output-directory={build_dir} {outfile}')
+    args = shlex.split(f'lualatex -recorder -output-directory="{build_dir}" "{outfile}"')
     try:
         result = subprocess.run(args, check=True, stdout=subprocess.PIPE)
     except subprocess.CalledProcessError:
